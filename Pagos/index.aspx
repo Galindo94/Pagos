@@ -29,7 +29,7 @@
         <div class="container medios borde-arriba">
 
             <div class="row justify-content-center">
-                <h2>Seleccione el <b class="letra-verde">método de pago</b> que desea utilizar.</h2>
+                <h2>Seleccione  <b class="letra-verde">método de pago</b> que desea utilizar.</h2>
             </div>
 
             <div class="row center-xs">
