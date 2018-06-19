@@ -1,0 +1,55 @@
+﻿.medios {
+    background: #f6f6f6;
+    padding: 60px 20px 20px;
+}
+
+.pago {
+    background: #FFFFFF;
+    padding: 30px;
+    /*text-align: center;*/
+    margin: 10px;
+    border-radius: 4px;
+}
+
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.center-xs {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.row {
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+}
+
+.letra-verde {
+    color: #92d242;
+}
+
+.rowcenter {
+    text-align: center;
+}
+
+.borde-arriba {
+    margin-top: 25px;
+}

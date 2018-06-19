@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://api.placetopay.com/soap/pse" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="PlacetoPay_PSE" targetNamespace="https://api.placetopay.com/soap/pse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://api.placetopay.com/soap/pse">
+      <xsd:complexType name="Attribute">
+        <xsd:all>
+          <xsd:element name="name" nillable="true" type="xsd:string" />
+          <xsd:element name="value" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAttribute">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Attribute" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Authentication">
+        <xsd:all>
+          <xsd:element name="login" nillable="true" type="xsd:string" />
+          <xsd:element name="tranKey" nillable="true" type="xsd:string" />
+          <xsd:element name="seed" nillable="true" type="xsd:string" />
+          <xsd:element name="additional" nillable="true" type="tns:ArrayOfAttribute" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="getBankList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="auth" nillable="true" type="tns:Authentication" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Bank">
+        <xsd:all>
+          <xsd:element name="bankCode" nillable="true" type="xsd:string" />
+          <xsd:element name="bankName" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfBank">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bank" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getBankListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getBankListResult" type="tns:ArrayOfBank" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Person">
+        <xsd:all>
+          <xsd:element name="documentType" nillable="true" type="xsd:string" />
+          <xsd:element name="document" nillable="true" type="xsd:string" />
+          <xsd:element name="firstName" nillable="true" type="xsd:string" />
+          <xsd:element name="lastName" nillable="true" type="xsd:string" />
+          <xsd:element name="company" nillable="true" type="xsd:string" />
+          <xsd:element name="emailAddress" nillable="true" type="xsd:string" />
+          <xsd:element name="address" nillable="true" type="xsd:string" />
+          <xsd:element name="city" nillable="true" type="xsd:string" />
+          <xsd:element name="province" nillable="true" type="xsd:string" />
+          <xsd:element name="country" nillable="true" type="xsd:string" />
+          <xsd:element name="phone" nillable="true" type="xsd:string" />
+          <xsd:element name="mobile" nillable="true" type="xsd:string" />
+          <xsd:element name="postalCode" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="PSETransactionRequest">
+        <xsd:all>
+          <xsd:element name="bankCode" nillable="true" type="xsd:string" />
+          <xsd:element name="bankInterface" nillable="true" type="xsd:string" />
+          <xsd:element name="returnURL" nillable="true" type="xsd:string" />
+          <xsd:element name="reference" nillable="true" type="xsd:string" />
+          <xsd:element name="description" nillable="true" type="xsd:string" />
+          <xsd:element name="language" nillable="true" type="xsd:string" />
+          <xsd:element name="currency" nillable="true" type="xsd:string" />
+          <xsd:element name="totalAmount" nillable="true" type="xsd:double" />
+          <xsd:element name="taxAmount" nillable="true" type="xsd:double" />
+          <xsd:element name="devolutionBase" nillable="true" type="xsd:double" />
+          <xsd:element name="tipAmount" nillable="true" type="xsd:double" />
+          <xsd:element name="payer" nillable="true" type="tns:Person" />
+          <xsd:element name="buyer" nillable="true" type="tns:Person" />
+          <xsd:element name="shipping" nillable="true" type="tns:Person" />
+          <xsd:element name="ipAddress" nillable="true" type="xsd:string" />
+          <xsd:element name="userAgent" nillable="true" type="xsd:string" />
+          <xsd:element name="additionalData" nillable="true" type="tns:ArrayOfAttribute" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="createTransaction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="auth" type="tns:Authentication" />
+            <xsd:element name="transaction" type="tns:PSETransactionRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="PSETransactionResponse">
+        <xsd:all>
+          <xsd:element name="returnCode" nillable="true" type="xsd:string" />
+          <xsd:element name="bankURL" nillable="true" type="xsd:string" />
+          <xsd:element name="trazabilityCode" nillable="true" type="xsd:string" />
+          <xsd:element name="transactionCycle" nillable="true" type="xsd:int" />
+          <xsd:element name="transactionID" nillable="true" type="xsd:int" />
+          <xsd:element name="sessionID" nillable="true" type="xsd:string" />
+          <xsd:element name="bankCurrency" nillable="true" type="xsd:string" />
+          <xsd:element name="bankFactor" nillable="true" type="xsd:float" />
+          <xsd:element name="responseCode" nillable="true" type="xsd:int" />
+          <xsd:element name="responseReasonCode" nillable="true" type="xsd:string" />
+          <xsd:element name="responseReasonText" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="createTransactionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createTransactionResult" type="tns:PSETransactionResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="CreditConcept">
+        <xsd:all>
+          <xsd:element name="entityCode" nillable="true" type="xsd:string" />
+          <xsd:element name="serviceCode" nillable="true" type="xsd:string" />
+          <xsd:element name="amountValue" nillable="true" type="xsd:double" />
+          <xsd:element name="taxValue" nillable="true" type="xsd:double" />
+          <xsd:element name="description" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCreditconcept">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:CreditConcept" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PSETransactionMultiCreditRequest">
+        <xsd:all>
+          <xsd:element name="credits" nillable="true" type="tns:ArrayOfCreditconcept" />
+          <xsd:element name="bankCode" nillable="true" type="xsd:string" />
+          <xsd:element name="bankInterface" nillable="true" type="xsd:string" />
+          <xsd:element name="returnURL" nillable="true" type="xsd:string" />
+          <xsd:element name="reference" nillable="true" type="xsd:string" />
+          <xsd:element name="description" nillable="true" type="xsd:string" />
+          <xsd:element name="language" nillable="true" type="xsd:string" />
+          <xsd:element name="currency" nillable="true" type="xsd:string" />
+          <xsd:element name="totalAmount" nillable="true" type="xsd:double" />
+          <xsd:element name="taxAmount" nillable="true" type="xsd:double" />
+          <xsd:element name="devolutionBase" nillable="true" type="xsd:double" />
+          <xsd:element name="tipAmount" nillable="true" type="xsd:double" />
+          <xsd:element name="payer" nillable="true" type="tns:Person" />
+          <xsd:element name="buyer" nillable="true" type="tns:Person" />
+          <xsd:element name="shipping" nillable="true" type="tns:Person" />
+          <xsd:element name="ipAddress" nillable="true" type="xsd:string" />
+          <xsd:element name="userAgent" nillable="true" type="xsd:string" />
+          <xsd:element name="additionalData" nillable="true" type="tns:ArrayOfAttribute" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="createTransactionMultiCredit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="auth" type="tns:Authentication" />
+            <xsd:element name="transaction" type="tns:PSETransactionMultiCreditRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createTransactionMultiCreditResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createTransactionMultiCreditResult" type="tns:PSETransactionResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTransactionInformation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="auth" type="tns:Authentication" />
+            <xsd:element name="transactionID" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="TransactionInformation">
+        <xsd:all>
+          <xsd:element name="transactionID" nillable="true" type="xsd:int" />
+          <xsd:element name="sessionID" nillable="true" type="xsd:string" />
+          <xsd:element name="reference" nillable="true" type="xsd:string" />
+          <xsd:element name="requestDate" nillable="true" type="xsd:string" />
+          <xsd:element name="bankProcessDate" nillable="true" type="xsd:string" />
+          <xsd:element name="onTest" nillable="true" type="xsd:boolean" />
+          <xsd:element name="returnCode" nillable="true" type="xsd:string" />
+          <xsd:element name="trazabilityCode" nillable="true" type="xsd:string" />
+          <xsd:element name="transactionCycle" nillable="true" type="xsd:int" />
+          <xsd:element name="transactionState" nillable="true" type="xsd:string" />
+          <xsd:element name="responseCode" nillable="true" type="xsd:int" />
+          <xsd:element name="responseReasonCode" nillable="true" type="xsd:string" />
+          <xsd:element name="responseReasonText" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="getTransactionInformationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTransactionInformationResult" type="tns:TransactionInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBankListIn">
+    <wsdl:part name="parameters" element="tns:getBankList" />
+  </wsdl:message>
+  <wsdl:message name="getBankListOut">
+    <wsdl:part name="parameters" element="tns:getBankListResponse" />
+  </wsdl:message>
+  <wsdl:message name="createTransactionIn">
+    <wsdl:part name="parameters" element="tns:createTransaction" />
+  </wsdl:message>
+  <wsdl:message name="createTransactionOut">
+    <wsdl:part name="parameters" element="tns:createTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="createTransactionMultiCreditIn">
+    <wsdl:part name="parameters" element="tns:createTransactionMultiCredit" />
+  </wsdl:message>
+  <wsdl:message name="createTransactionMultiCreditOut">
+    <wsdl:part name="parameters" element="tns:createTransactionMultiCreditResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTransactionInformationIn">
+    <wsdl:part name="parameters" element="tns:getTransactionInformation" />
+  </wsdl:message>
+  <wsdl:message name="getTransactionInformationOut">
+    <wsdl:part name="parameters" element="tns:getTransactionInformationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PlacetoPay_PSEPort">
+    <wsdl:operation name="getBankList">
+      <documentation>Obtiene la lista de bancos</documentation>
+      <wsdl:input message="tns:getBankListIn" />
+      <wsdl:output message="tns:getBankListOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createTransaction">
+      <documentation>Solicita la creación de una transacción</documentation>
+      <wsdl:input message="tns:createTransactionIn" />
+      <wsdl:output message="tns:createTransactionOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createTransactionMultiCredit">
+      <documentation>Solicita la creación de una transacción con dispersión de fondos</documentation>
+      <wsdl:input message="tns:createTransactionMultiCreditIn" />
+      <wsdl:output message="tns:createTransactionMultiCreditOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionInformation">
+      <documentation>Obtiene la información de una transacción</documentation>
+      <wsdl:input message="tns:getTransactionInformationIn" />
+      <wsdl:output message="tns:getTransactionInformationOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PlacetoPay_PSEBinding" type="tns:PlacetoPay_PSEPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getBankList">
+      <soap:operation soapAction="https://api.placetopay.com/soap/pse#getBankList" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTransaction">
+      <soap:operation soapAction="https://api.placetopay.com/soap/pse#createTransaction" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTransactionMultiCredit">
+      <soap:operation soapAction="https://api.placetopay.com/soap/pse#createTransactionMultiCredit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionInformation">
+      <soap:operation soapAction="https://api.placetopay.com/soap/pse#getTransactionInformation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PlacetoPay_PSEService">
+    <wsdl:port name="PlacetoPay_PSEPort" binding="tns:PlacetoPay_PSEBinding">
+      <soap:address location="https://test.placetopay.com/soap/pse" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

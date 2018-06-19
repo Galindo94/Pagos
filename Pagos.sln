@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagos", "Pagos\Pagos.csproj", "{C55F63C3-1F9D-4E9E-9A00-EA9EF0E5082D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio", "Servicio\Servicio.csproj", "{0906523E-6E2E-4C2C-B69E-FB9C118F5E94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C55F63C3-1F9D-4E9E-9A00-EA9EF0E5082D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55F63C3-1F9D-4E9E-9A00-EA9EF0E5082D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55F63C3-1F9D-4E9E-9A00-EA9EF0E5082D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55F63C3-1F9D-4E9E-9A00-EA9EF0E5082D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0906523E-6E2E-4C2C-B69E-FB9C118F5E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0906523E-6E2E-4C2C-B69E-FB9C118F5E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0906523E-6E2E-4C2C-B69E-FB9C118F5E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0906523E-6E2E-4C2C-B69E-FB9C118F5E94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
